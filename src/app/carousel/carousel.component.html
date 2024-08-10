@@ -1,24 +1,26 @@
 <div class="wrap" [style.height]="itemHeight+'px'">
-	<div #carousel>
-		<div #content class="item" [style.width]="3*itemsQuantity*itemWidth+'px'">
-			<ng-content></ng-content>
-		</div>
-	</div>
-		<ng-content select=".prev-button"></ng-content>
-		<ng-content select=".next-button"></ng-content>
-		<ng-container *ngIf="showControls">
-			<div [style.line-height]="itemHeight+'px'"  class="carousel_prev-button" (click)="prev()">
-    <a class="carousel-control-prev-icon"></a>
+  <div #carousel>
+    <div #content class="item" [style.width]="3*itemsQuantity*itemWidth+'px'">
+      <ng-content></ng-content>
+    </div>
   </div>
-  <div [style.line-height]="itemHeight+'px'" class="carousel_next-button" (click)="next()">
-    <a class="carousel-control-next-icon"></a>
-  </div>
-</ng-container>
+  <ng-content select=".prev-button"></ng-content>
+  <ng-content select=".next-button"></ng-content>
+  <ng-container *ngIf="showControls">
+
+    <button class="control-btn left" (click)="prev()">
+      <i class="fas fa-chevron-left fa-xl"></i>
+    </button>
+    <button class="control-btn right" (click)="next()">
+      <i class="fas fa-chevron-right fa-xl"></i>
+    </button>
+
+  </ng-container>
 </div>
 <ng-container *ngIf="showSelectors">
-  <div class="selectors" >
-  <div class="selector" *ngFor="let t of ' ' .repeat(itemsQuantity).split('');let i=index" (click)="setSlide(i)" 
-        [style.background-color]="i==(currentSlide%itemsQuantity)?'black':'transparent'">
-  </div>
+  <div class="selectors">
+    <div class="selector" *ngFor="let t of ' ' .repeat(itemsQuantity).split('');let i=index" (click)="setSlide(i)"
+      [style.background-color]="i==(currentSlide%itemsQuantity)?'black':'transparent'">
+    </div>
   </div>
 </ng-container>
